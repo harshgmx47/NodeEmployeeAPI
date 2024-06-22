@@ -35,4 +35,16 @@ const parseDate = (dateString) => {
     }
   });
 
+  // POST: Add multiple employees
+router.post('/bulk', async (req, res) => {
+  try {
+    const employeesToAdd = req.body; // Assuming req.body is an array of employees
+    
+    const insertedEmployees = await Employee.insertMany(employeesToAdd);
+    res.status(200).json(insertedEmployees);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+})
+
 module.exports = router;
