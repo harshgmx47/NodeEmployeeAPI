@@ -13,9 +13,23 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 // Use employee routes
 app.use('/api/employees', employeeRoutes);
 
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
+
 const port =process.env.PORT  || 3000;
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
 
 module.exports = app;
+
+
+
+
+
+
+
+
