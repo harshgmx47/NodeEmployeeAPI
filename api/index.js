@@ -13,7 +13,7 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 // Use employee routes
 app.use('/api/employees', employeeRoutes);
 
-const port = 3000;
+const port =process.env.PORT  || 3000;
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
